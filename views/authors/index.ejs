@@ -1,32 +1,24 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title></title>
-	</head>
-	<body>
-		<header>
-			<h1>Authors</h1>
-			<nav>
-				<ul>
-					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
-						<a href="/authors/new">Create a new Author</a>
-					</li>
-				</ul>
-			</nav>
-		</header>
-		<main>
-			<h2>List of Authors</h2>
-			<ul>
-				<% authors.forEach(author => { %>
-					<li>
-						<a href="/authors/<%= author._id %>"><%= author.name %></a>
-					</li>
-				<% }) %>
-			</ul>
-		</main>
-	</body>
-</html>
+
+<header>
+	<h1>Authors</h1>
+	<nav>
+		<ul>
+			<li>
+				<a href="/">Home</a>
+			</li>
+			<li>
+				<a href="/authors/new">Create a new Author</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+<main>
+	<h2>List of Authors</h2>
+	<ul>
+		<% authors.forEach(author => { %>
+			<li>
+				<a href="/authors/<%= author._id %>"><%= author.name %></a>
+			</li>
+		<% }) %>
+	</ul>
+</main>
