@@ -1,4 +1,169 @@
-# Setting up SASS with a Node/Express project
+# Setting up Partials and SASS with a Node/Express project
+
+## EJS Layouts
+
+Adding partials can dry up the code a bit, but [EJS Layouts](https://www.npmjs.com/package/express-ejs-layouts)  can take this modularity even farther and make a big diffence with large applications.
+EJS layouts is a node package that allows us to create a boilerplate (aka a layout) that we can inject content into based on which route is reached. Layouts normally include header and footer content that you want to display on every page (navbar, sitemap, logo, etc.).
+
+### Install EJS Layouts
+
+1. Install EJS layouts
+
+Install `express-ejs-layouts` via npm
+
+```
+npm install express-ejs-layouts
+```
+
+2. Set up EJS layouts
+
+Require the module and add it to the app with `app.use()`.
+
+<strong>server.js</strong>
+
+```javascript
+// require statements
+const express = require('express');
+const app = express();
+const ejsLayouts = require('express-ejs-layouts);
+
+...
+// middleware
+app.set('view engine', 'ejs');
+app.use(ejsLayouts);
+```
+
+3. Create a layout
+
+In the root of the views folder, add a layout called `layout.ejs`. It must be called `layout.ejs`, as mandated by `express-ejs-layouts`.
+
+<strong>layout.ejs</strong>
+
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bob Loblaw's Law Blog</title>
+</head>
+<body>
+  <%- body %>
+</body>
+</html>
+```
+
+4. In the views folder, edit the `home.ejs` file to remove the html, body, and head tags:
+
+<strong>home.ejs</strong>
+
+```javascript
+		<header>
+			<h1>Welcome to the Blog</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/authors">Authors</a>
+					</li>
+					<li>
+						<a href="/articles">Articles</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+```
+
+Now edit the home route in your `server.js` below the middleware:
+
+```javascript
+app.get('/', (req, res) => {
+    res.render('home');
+})
+```
+
+Ejs will assume that home means `home.ejs`. Now start nodemon and check that your home page renders as desired.
+
+This layout will be used by all pages, and the content will be filled in where the `<%- body %>` tag is placed. `<%- body %>` is a special tag used by `express-ejs-layouts` that cannot be renamed.
+
+5. Set up a few more views/routes
+
+<strong>controllers/authors.js</strong>
+
+Change `authors/index.ejs` to `authors/index`
+
+```javascript
+// PATH = /authors
+router.get('/', (req, res) => {
+    Author.find({}, (err, foundAuthors) => {
+        if (err) console.log(error)
+
+        res.render('authors/index', {
+            authors: foundAuthors
+        })
+    })
+})
+```
+
+<strong>authors/index.ejs</strong>
+
+We will once again remove the outter html tags (`html, head, body`).
+
+```javascript
+<header>
+	<h1>Authors</h1>
+	<nav>
+		<ul>
+			<li>
+				<a href="/">Home</a>
+			</li>
+			<li>
+				<a href="/authors/new">Create a new Author</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+<main>
+	<h2>List of Authors</h2>
+	<ul>
+		<% authors.forEach(author => { %>
+			<li>
+				<a href="/authors/<%= author._id %>"><%= author.name %></a>
+			</li>
+		<% }) %>
+	</ul>
+</main>
+```
+
+6. Bonus: Add a navigation bar for every page
+
+Add a simple navigation list to the top of the layout page so there's a navigation to every page from every page:
+
+<strong>layout.ejs</strong>
+
+```javascript
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bob Loblaw's Law Blog</title>
+</head>
+<body>
+  <nav>
+		<ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+			<li>
+				<a href="/authors">Authors</a>
+			</li>
+			<li>
+				<a href="/articles">Articles</a>
+			</li>
+		</ul>
+	</nav>
+  <%- body %>
+</body>
+</html>
+```
+
+You may be wondering why we're refactoring our code like this? It's important to reuse components (like the nav bar) so the server doesn't have to render additional EJS and ultimately enhances our efficiency and code reusability. In the next half of the lecture we will cover SASS, how to write it, how to compile it, and how to link it to our `layout.ejs` file.
 
 ## What is SASS?
 
