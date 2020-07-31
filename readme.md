@@ -1,4 +1,87 @@
-# Setting up SASS with a Node/Express project
+# Setting up Partials and SASS with a Node/Express project
+
+## EJS Layouts
+
+Adding partials can dry up the code a bit, but [EJS Layouts](https://www.npmjs.com/package/express-ejs-layouts)  can take this modularity even farther and make a big diffence with large applications.
+EJS layouts is a node package that allows us to create a boilerplate (aka a layout) that we can inject content into based on which route is reached. Layouts normally include header and footer content that you want to display on every page (navbar, sitemap, logo, etc.).
+
+### Install EJS Layouts
+
+1. Install EJS layouts
+
+Install `express-ejs-layouts` via npm
+
+```
+npm install express-ejs-layouts
+```
+
+2. Set up EJS layouts
+
+Require the module and add it to the app with `app.use()`.
+
+* server.js
+
+```javascript
+// require statements
+const express = require('express');
+const app = express();
+const ejsLayouts = require('express-ejs-layouts);
+
+...
+// middleware
+app.set('view engine', 'ejs');
+app.use(ejsLayouts);
+```
+
+3. Create a layout
+
+In the root of the views folder, add a layout called `layout.ejs`. It must be called `layout.ejs`, as mandated by `express-ejs-layouts`.
+
+* layout.ejs
+
+```
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bob Loblaw's Law Blog</title>
+</head>
+<body>
+  <%- body %>
+</body>
+</html>
+```
+
+4. In the views folder, edit the `home.ejs` file to remove the html, body, and head tags:
+
+* home.ejs
+
+```
+		<header>
+			<h1>Welcome to the Blog</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/authors">Authors</a>
+					</li>
+					<li>
+						<a href="/articles">Articles</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+```
+
+Now edit the home route in your `server.js` below the middleware:
+
+```javascript
+app.get('/', (req, res) => {
+    res.render('home');
+})
+```
+
+Ejs will assume that home means `home.ejs`. Now start nodemon and check that your home page renders as desired.
+
+This layout will be used by all pages, and the content will be filled in where the `<%- body %>` tag is placed. `<%- body %>` is a special tag used by `express-ejs-layouts` that cannot be renamed.
 
 ## What is SASS?
 

@@ -3,6 +3,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const methodOverride = require("method-override")
 const app = express()
+const ejsLayouts = require('express-ejs-layouts');
 const authorsController = require('./controllers/authors') 
 const articlesController = require('./controllers/articles')
 
@@ -24,10 +25,11 @@ mongoose.connection.on('error', (err) => console.log('Mongoose error', err))
 // parses data from forms and adds it to the body object of the request
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride('_method'))
-
+app.set('view engine', 'ejs');
+app.use(ejsLayouts);
 // routes
 app.get('/', (req, res) => {
-    res.render('home.ejs')
+    res.render('home')
 })
 
 // when requests with a pathname that begins with '/authors' comes in, mount those requests
