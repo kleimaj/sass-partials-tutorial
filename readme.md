@@ -10,9 +10,11 @@ SASS has a couple different formats - SASS and SCSS. SASS format removes the sem
 
 1. Set up your static files and folder structure.
     * Create `public` folder in top level folder
-    * Put the following line of code in your index.js
-
-        `app.use(express.static(__dirname + '/public/'));`
+    * Put the following line of code in your server.js
+      
+      ```javascript
+      app.use(express.static(__dirname + '/public/'));
+      ```
 
     * Inside the public folder, create a `css` folder.
     * Inside the css folder, create a `sass` folder.
@@ -28,7 +30,7 @@ SASS has a couple different formats - SASS and SCSS. SASS format removes the sem
 4. Create an SCSS file called `style.scss` in your sass folder
 
 5. Put some code in it
-    ```
+    ```css
     $my_favorite_color: #0f0;
     $my_second_favorite_color: #00f;
 
@@ -45,7 +47,7 @@ SASS has a couple different formats - SASS and SCSS. SASS format removes the sem
     * Check it out, you should have a style.css in the parent folder now!
 
 7. Add your new `style.css` file to your layout.ejs file. See it in action!
-  ```
+  ```javascript
   <link rel="stylesheet" type="text/css" href="css/style.css">
   ```
 ## Neat. What else does it do?
