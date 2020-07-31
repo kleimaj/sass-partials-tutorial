@@ -56,19 +56,19 @@ In the root of the views folder, add a layout called `layout.ejs`. It must be ca
 <strong>home.ejs</strong>
 
 ```javascript
-		<header>
-			<h1>Welcome to the Blog</h1>
-			<nav>
-				<ul>
-					<li>
-						<a href="/authors">Authors</a>
-					</li>
-					<li>
-						<a href="/articles">Articles</a>
-					</li>
-				</ul>
-			</nav>
-		</header>
+<header>
+  <h1>Welcome to the Blog</h1>
+  <nav>
+    <ul>
+      <li>
+        <a href="/authors">Authors</a>
+      </li>
+      <li>
+        <a href="/articles">Articles</a>
+      </li>
+    </ul>
+  </nav>
+</header>
 ```
 
 Now edit the home route in your `server.js` below the middleware:
@@ -108,28 +108,28 @@ We will once again remove the outter html tags (`html, head, body`).
 
 ```javascript
 <header>
-	<h1>Authors</h1>
-	<nav>
-		<ul>
-			<li>
-				<a href="/">Home</a>
-			</li>
-			<li>
-				<a href="/authors/new">Create a new Author</a>
-			</li>
-		</ul>
-	</nav>
-</header>
-<main>
-	<h2>List of Authors</h2>
-	<ul>
-		<% authors.forEach(author => { %>
-			<li>
-				<a href="/authors/<%= author._id %>"><%= author.name %></a>
-			</li>
-		<% }) %>
-	</ul>
-</main>
+  <h1>Authors</h1>
+  <nav>
+    <ul>
+      <li>
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/authors/new">Create a new Author</a>
+      </li>
+    </ul>
+  </nav>
+  </header>
+  <main>
+    <h2>List of Authors</h2>
+    <ul>
+      <% authors.forEach(author => { %>
+        <li>
+          <a href="/authors/<%= author._id %>"><%= author.name %></a>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
 ```
 
 6. Bonus: Add a navigation bar for every page
@@ -146,18 +146,18 @@ Add a simple navigation list to the top of the layout page so there's a navigati
 </head>
 <body>
   <nav>
-		<ul>
+    <ul>
       <li>
         <a href="/">Home</a>
       </li>
-			<li>
-				<a href="/authors">Authors</a>
-			</li>
-			<li>
-				<a href="/articles">Articles</a>
-			</li>
-		</ul>
-	</nav>
+      <li>
+        <a href="/authors">Authors</a>
+      </li>
+      <li>
+        <a href="/articles">Articles</a>
+      </li>
+    </ul>
+  </nav>
   <%- body %>
 </body>
 </html>
