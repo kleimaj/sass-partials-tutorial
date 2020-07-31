@@ -7,7 +7,7 @@ const { create } = require("../models/article")
 // PATH = /articles
 router.get('/', (req, res) => {
     Article.find({}, (err, foundArticles) => {
-        res.render('articles/index.ejs', {
+        res.render('articles/index', {
             articles: foundArticles
         })
     })
