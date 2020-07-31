@@ -1,0 +1,17 @@
+{
+  "name": "node-sass",
+  "version": "1.0.0",
+  "description": "## What is SASS?",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.generalassemb.ly/sei-629/node-sass.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
