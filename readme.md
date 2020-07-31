@@ -23,7 +23,7 @@ SASS has a couple different formats - SASS and SCSS. SASS format removes the sem
 
 3. Add to the scripts in your package.json
 
-    `"sass": "node-sass css/sass/ -o css/"`
+    `"sass": "node-sass public/css/sass/ -o public/css/"`
 
 4. Create an SCSS file called `style.scss` in your sass folder
 
@@ -45,7 +45,9 @@ SASS has a couple different formats - SASS and SCSS. SASS format removes the sem
     * Check it out, you should have a style.css in the parent folder now!
 
 7. Add your new `style.css` file to your layout.ejs file. See it in action!
-
+  ```
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  ```
 ## Neat. What else does it do?
 
 Check out the [guide on the SASS website](https://sass-lang.com/guide) for an overview on what SASS can do. In a nutshell, we can use it to enable CSS to work with variables, nesting, inheritance, partials, mixins, and operators. 
