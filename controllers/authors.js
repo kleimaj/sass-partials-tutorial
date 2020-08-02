@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
     Author.find({}, (err, foundAuthors) => {
         if (err) console.log(error)
 
-        res.render('authors/index.ejs', {
+        res.render('authors/index', {
             authors: foundAuthors
         })
     })

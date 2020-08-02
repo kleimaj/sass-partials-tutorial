@@ -1,0 +1,68 @@
+/* Variables */
+/* CSS RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "Helvetica Neue"; }
+
+/* Classes */
+.navbar {
+  background-color: #cb6b70;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25)); }
+  .navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 1.5rem;
+    font-weight: bold; }
+    .navbar a:hover {
+      transition: all 0.5s ease-in-out;
+      color: #000000; }
+  .navbar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center; }
+    .navbar ul li {
+      padding: 1.5rem; }
+
+/* Default Selectors */
+h1, h2, h3 {
+  font-weight: 500; }
+
+a {
+  font-size: 1.5rem; }
+  a:hover {
+    color: #000000;
+    transition: all 0.5s ease-in-out; }
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }
+  header h1 {
+    margin: 15px;
+    font-size: 2.5rem; }
+  header ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    header ul li {
+      padding: 2rem;
+      list-style: none; }
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center; }

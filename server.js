@@ -24,6 +24,7 @@ mongoose.connection.on('error', (err) => console.log('Mongoose error', err))
 // middleware
 // parses data from forms and adds it to the body object of the request
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static(__dirname + '/public/'));
 app.use(methodOverride('_method'))
 app.set('view engine', 'ejs');
 app.use(ejsLayouts);
