@@ -207,7 +207,7 @@ SASS has a couple different formats - SASS and SCSS. SASS format removes the sem
     }
     ```
 
-6. Run the command `npm run-script sass` that we added to package.json earlier.
+6. Run the command `npm run sass` that we added to package.json earlier.
 
     * Check it out, you should have a style.css in the parent folder now!
 
